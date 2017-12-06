@@ -16,7 +16,7 @@
                 if (conn == null)
                         throw new Exception( "데이터베이스에 연결할 수 없습니다.");
                 stmt = conn.createStatement();
-                String command = String.format( "update user set name := '%s', ID := '%s', password := '%s', address :='%s',phoneNum :='%s' where ID = '%s';",
+                String command = String.format( "update user set name := '%s', userID := '%s', password := '%s', address :='%s',phoneNum :='%s' where userID = '%s';",
                                                                                                                               name, ID, password, address,phoneNum, ID);
                 int rowNum = stmt.executeUpdate(command);
                 if (rowNum < 1)

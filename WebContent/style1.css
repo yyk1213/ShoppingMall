@@ -9,6 +9,7 @@
 	font-family: "Jeju Myeongjo", serif;
 	color:#000;
 }
+
 #header{
 	width:100%;
 	height:20%;
@@ -44,6 +45,10 @@
 	width: 100%;
     margin: 0px 0px 0px 0px;
     padding: 0px 0px;
+}
+#main{
+	text-align:center;
+	overflow:auto;
 }
 .nav-link{
 	font-family: "Jeju Myeongjo", serif;

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=euc-kr" pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>
 <%
 	Class.forName("com.mysql.jdbc.Driver");
@@ -32,9 +32,9 @@
 		<a href=""><img src="images/joy.jpg"
 			style="float: left; height: 100%;"></a>
 		<ul class="nav justify-content-end">
-			<li class="nav-item"><a class="nav-link active" href="#">ë¡œê·¸ì¸</a>
+			<li class="nav-item"><a class="nav-link active" href="#">·Î±×ÀÎ</a>
 			</li>
-			<li class="nav-item"><a class="nav-link" href="#">íšŒì›ê°€ì…</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">È¸¿ø°¡ÀÔ</a></li>
 			<li class="nav-item"><a class="nav-link" href="#">My Page</a></li>
 			<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
 			</li>
@@ -51,9 +51,9 @@
 	</div>
 
 	<div class="container col-7" id="content">
-		<!-- ë‚´ìš© -->
+		<!-- ³»¿ë -->
 		<div>
-			<h3>ììœ  ê²Œì‹œíŒ</h3>
+			<h3>ÀÚÀ¯ °Ô½ÃÆÇ</h3>
 			<p class="show-top1"
 				style="border-bottom: 1px solid; border-top: 2px solid;">
 				subject
@@ -75,7 +75,7 @@
 			</form>
 			<form action=boardList.jsp method="GET">
 				<button type="submit" class="btn btn-secondary btn-sm"
-					style="float: right;" formmethod="POST" data-confirm="ê¸€ì„ ì‚­ì œí•©ë‹ˆë‹¤">delete</button>
+					style="float: right;" formmethod="POST" data-confirm="±ÛÀ» »èÁ¦ÇÕ´Ï´Ù">delete</button>
 			</form>
 			<form action=boardList.jsp method="GET">
 				<button type="submit" class="btn btn-secondary btn-sm"

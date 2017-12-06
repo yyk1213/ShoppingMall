@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=euc-kr"%>
+<%request.setCharacterEncoding("euc-kr"); %>
 <%@ page import="java.sql.*" %>
 <html>
 <head>
 
 <link rel="stylesheet" type="text/css" href="style1.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-<title>ê²Œì‹œíŒ</title></head>
+<title>°Ô½ÃÆÇ</title></head>
 <body>
 <div id="wrapper">
 	<div id="container">
@@ -14,10 +14,10 @@ pageEncoding="UTF-8"%>
 			<a href=""><img src="images/joy.jpg" style="float:left;height:100%; "></a>
 			<ul class="nav justify-content-end" >
 				<li class="nav-item">
-    				<a class="nav-link" href="#">ë¡œê·¸ì¸</a>
+    				<a class="nav-link" href="#">·Î±×ÀÎ</a>
   				</li>
   				<li class="nav-item">
-   					 <a class="nav-link" href="#">íšŒì›ê°€ìž…</a>
+   					 <a class="nav-link" href="#">È¸¿ø°¡ÀÔ</a>
   				</li>
   				<li class="nav-item">
     				<a class="nav-link" href="#">My Page</a>
@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
 		</div>
 
 		<div id="content">
-			<h2>ê²Œì‹œíŒ</h2>
+			<h2>°Ô½ÃÆÇ</h2>
 
 <%
 int total=0;
@@ -46,14 +46,14 @@ int total=0;
                 Class.forName( "com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root","forgod1994!");
                 if (conn == null)
-                        throw new Exception( "ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+                        throw new Exception( "µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áÇÒ ¼ö ¾ø½À´Ï´Ù.");
                 stmt = conn.createStatement();
                 ResultSet rs=stmt.executeQuery("select count(*) from board;");
                 if (rs.next())
                        total=rs.getInt(1);
                 rs.close();
-                out.print("ì´ ê²Œì‹œë¬¼:"+total+"ê°œ");
-                rs=stmt.executeQuery("select id, writer, title,hit from board");
+                out.print("ÃÑ °Ô½Ã¹°:"+total+"°³");
+                rs=stmt.executeQuery("select boardID, writer, title,hit from board");
 %>
 	
 			<table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -62,17 +62,17 @@ int total=0;
 				<tr height="5"><td width="5"></td></tr>
 				<tr height="5" align="center">
 					<td>&nbsp;</td>
-					<td width="73"> ë²ˆí˜¸</td>
-					<td width="379" align="left">ì œëª©</td>
-					<td width="73" align="center">ìž‘ì„±ìž</td>
-					<td width="73">ì¡°íšŒìˆ˜</td>
+					<td width="73"> ¹øÈ£</td>
+					<td width="379" align="left">Á¦¸ñ</td>
+					<td width="73" align="center">ÀÛ¼ºÀÚ</td>
+					<td width="73">Á¶È¸¼ö</td>
 				</tr>
 				<tr height="1" bgcolor="#82B5DF"><td colspan="6" width="752"></td></tr>
 <%
 	if(total==0) {
 %>
 	 		<tr align="center" bgcolor="#FFFFFF" height="30">
-	 	   <td colspan="6">ë“±ë¡ëœ ê¸€ì´ ì—†ìŠµë‹ˆë‹¤.</td>
+	 	   <td colspan="6">µî·ÏµÈ ±ÛÀÌ ¾ø½À´Ï´Ù.</td>
 	 	  </tr>
 <%
 	 	} else {
@@ -106,7 +106,7 @@ int total=0;
  				<tr height="1" bgcolor="#82B5DF"><td colspan="6" width="752"></td></tr>
  		</table>
   		<form action=boardForm.jsp METHOD=POST style="margin:10px">
- 			<button type="submit" class="btn btn-outline-dark" >ê¸€ì“°ê¸°</button>
+ 			<button type="submit" class="btn btn-outline-dark" >±Û¾²±â</button>
  		</form>
 
 	</div>

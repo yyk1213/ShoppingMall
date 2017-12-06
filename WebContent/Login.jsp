@@ -26,7 +26,7 @@ window.onload=function(){
 </script>
 </head>
 <body>
-<FORM name="loginForm" id="loginForm" ACTION=LoginProcess.jsp Method=GET>
+<FORM name="loginForm" id="loginForm" ACTION=LoginProcess.jsp Method=POST>
 아이디:<INPUT TYPE=TEXT NAME=id ID="id"><BR>
 패스워드:<INPUT TYPE=PASSWORD NAME=password ID="password"><BR>
 <INPUT TYPE="submit" VALUE='확인'>

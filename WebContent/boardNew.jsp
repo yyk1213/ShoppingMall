@@ -19,7 +19,21 @@
 		pstmt.setString(2, content);
 		pstmt.setString(3, writer);
 
-		pstmt.execute();
+		if (!pstmt.execute()) {
+			System.out.println("저장 성공");
+%>
+<script language=javascript>
+	self.window.alert("입력한 글을 저장하였습니다.");
+	location.href = "boardList.jsp";
+</script>
+<%
+	} else {
+%>
+<script language=javascript>
+	self.window.alert("저장실패");
+</script>
+<%
+	}
 		pstmt.close();
 		conn.close();
 
@@ -29,7 +43,3 @@
 
 	}
 %>
-<script language=javascript>
-	self.window.alert("입력한 글을 저장하였습니다.");
-	location.href = "boardList.jsp";
-</script>
