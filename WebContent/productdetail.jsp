@@ -11,21 +11,23 @@
 
 <body>
 <div id="wrapper">
-	<div id="container">
+	<div id="box">
 		<div id="header">
-			<a href=""><img src="images/joy.jpg" style="float:left;height:100%; "></a>
-			<ul class="nav justify-content-end" >
-				<li class="nav-item">
-    				<a class="nav-link" href="#">로그인</a>
-  				</li>
-  				<li class="nav-item">
-   					 <a class="nav-link" href="#">회원가입</a>
-  				</li>
-  				<li class="nav-item">
-    				<a class="nav-link" href="#">My Page</a>
-  				</li>
-			</ul>
-		</div>
+<a href="Main.jsp">
+<input type="image" src="images/joy.jpg" style="float:left;height:100%; "></a>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="Login.jsp">로그인</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="SignUp.html">회원가입</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="MyPage.jsp">My Page</a>
+  </li>
+
+</ul>
+</div>
 
 		<div id="menu">
 <nav class="nav flex-column">
@@ -35,30 +37,71 @@
   <a class="nav-link" href="boardList.jsp">Board</a>
 </nav>
 </div>
-		</div>
 
 		<div id="content">
 <% 
 Class.forName("com.mysql.jdbc.Driver");
-String productname=request.getAttribute("productname").toString();
+int productID=Integer.parseInt(request.getParameter("productID"));
 try{
-	Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "1234");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
 	Statement stmt=conn.createStatement();
-	String sql="SELECT productname, price,stock, category from product where productname="+productname;
+	String sql="SELECT productname, price,stock, category from product where productID="+productID;
 	ResultSet rs=stmt.executeQuery(sql);
 	
 	if(rs.next()){
+		String productname=rs.getString(1);
 		int price= rs.getInt(2);
 		int stock=rs.getInt(3);
 		String category=rs.getString(4);
-		
-		
-	}
-
 %>
-
+<div id="pic">
+<input type="image" src="http://localhost:8080/DB_final/DisplayImage?id=<%=productID%>" width="40%" >
+</div>
+<div id="detail">
+	<p>
+		<h2><%=productname %></h2>
+		price: <%=price %>
+	</p>
+	<form name="productnum" id="productnum" action="buy.jsp">
+		개수:<input type="number" id="number" name="number" required> <input type="submit" text="주문하기">
+	</form>
 </div>
 </div>
+</div>
 
+		</div>
+<script>
+
+window.onload=function(){
+	//submit을 눌렀을 때 호출될 함수설정
+	document.getElementById("productnum").onsubmit=function(){
+		//id값이 없으면 전송하지 않기
+		var snum=document.getElementById("number").value;
+		if(snum==null ||snum.length==0){
+			alert("개수는 필수 입력입니다.");
+			return false;
+		}else if(snum<0){
+			alert("양수를 입력하세요 ");
+			return false;
+		}
+		else if(snum.getClass().getName!="int"){
+			alert("숫자를 입력하세요");
+			return false;
+		}
+		return true;
+	}
+}
+</script>
 </body>
 </html>
+	<% 
+	String id=Integer.toString(productID);
+	response.addCookie(new Cookie("productID",id));
+	}
+ 	rs.close();
+ 	stmt.close();
+ 	conn.close();
+	 	
+	}catch(SQLException e) {
+}
+%>

@@ -13,14 +13,19 @@
 		if (conn == null)
 			throw new Exception("데이터베이스에 연결할 수 없습니다.");
 		stmt = conn.createStatement();
-		ResultSet result = stmt
-				.executeQuery("select userID from user where userID='" + id + "' and password='" + password + "' ;");
+		ResultSet result = stmt.executeQuery(
+				"select userID from user where userID='" + id + "' and password='" + password + "' ;");
 		if (!result.next()) {
-			throw new Exception("해당 데이터가 없습니다.");//팝업
-	} else {
+			%>
+<script>
+self.window.alert("회원이 아닙니다.");
+location.href("Login.jsp");
+</script>
+<%
+		} else {
 			session.setAttribute("id", id);
 			session.setAttribute("password", password);
-			response.sendRedirect("Main.html");
+			response.sendRedirect("Main.jsp");
 		}
 	} finally {
 		try {

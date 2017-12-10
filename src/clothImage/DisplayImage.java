@@ -3,7 +3,6 @@ package clothImage;
 import java.io.*;
 import java.io.IOException;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +17,7 @@ public class DisplayImage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String id = request.getParameter("id");
+		String id = request.getParameter("productID");
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;

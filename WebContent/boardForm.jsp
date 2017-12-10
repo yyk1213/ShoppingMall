@@ -32,8 +32,6 @@
                <textarea name="content" class="form-control" id="contentarea tippost_content" rows="7"></textarea> 
                <br> 
                <hr> 
-               <label for="titlearea" class="input-label">writer</label> 
-               <input name="writer" class="form-control form-control-sm" id="titlearea" type="text"> 
              </div> 
                <hr> 
                <button type="submit" class="btn btn-secondary btn-sm" style="float:right;">등록</button> 
@@ -45,7 +43,15 @@
             
          </div> 
       </div> 
+</body>
+</html><%
+if(session.getAttribute("userID")==null){
 
-
-</body></html>
-
+%>
+<script language=javascript>
+ self.window.alert(" 로그인이 필요합니다.  .");
+ location.href="Login.jsp";
+ </script><%
+}else
+response.addCookie(new Cookie("writer",session.getAttribute("userID").toString()));
+%>
