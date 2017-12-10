@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	errorPage="DBError.jsp"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" errorPage="../DBError.jsp"%>
 <%@ page import="java.sql.*"%>
 <%
 	Connection con = null;
@@ -12,9 +11,9 @@
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
 		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
-		
+
 		if (con == null)
-            throw new Exception( "데이터베이스에 연결할 수 없습니다.");
+			throw new Exception("데이터베이스에 연결할 수 없습니다.");
 
 		pstmt = con.prepareStatement("select * from user where userID=?");
 		pstmt.setString(1, id);
@@ -25,7 +24,6 @@
 		out.println(e.getMessage());
 	}
 %>
-
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
@@ -40,20 +38,16 @@
 	<%=id%>
 	사용 불가능
 	<br />
-	<form method="get" action="CheckId.jsp" id="idCheckForm"
-		onsubmit="return check()">
-		아이디:<input type="text" name="id" id="id" /> <input type="submit"
-			value="중복체크" />
+	<form method="get" action="CheckId.jsp" id="idCheckForm" onsubmit="return check()">
+		아이디:<input type="text" name="id" id="id" /> <input type="submit" value="중복체크" />
 	</form>
 	<%
 		} else if (id == null) {
 	%>
 	아이디 다시 선택
 	<br />
-	<form method="get" action="CheckId.jsp" id="idCheckForm"
-		onsubmit="return check()">
-		아이디:<input type="text" name="id" id="id" /> <input type="submit"
-			value="중복체크" />
+	<form method="get" action="CheckId.jsp" id="idCheckForm" onsubmit="return check()">
+		아이디:<input type="text" name="id" id="id" /> <input type="submit" value="중복체크" />
 	</form>
 	<%
 		} else {
@@ -63,14 +57,11 @@
 	사용 가능
 	<br />
 	<form method="get" action="CheckId.jsp" id="idCheckForm">
-		<a href="CheckId.jsp">다른 아이디 선택</a><br /> <input type="button"
-			value="현재 아이디 선택" onClick="javascript:checkIdClose('<%=id%>')" />
+		<a href="CheckId.jsp">다른 아이디 선택</a><br /> <input type="button" value="현재 아이디 선택" onClick="javascript:checkIdClose('<%=id%>')" />
 	</form>
-
 	<%
 		}
 	%>
-
 	<script>
 		function checkIdClose(id) {
 			opener.signUpForm.id.value = id;
@@ -89,4 +80,3 @@
 	</script>
 </body>
 </html>
-

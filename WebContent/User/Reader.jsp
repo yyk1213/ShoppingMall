@@ -1,11 +1,10 @@
-<%@page contentType="text/html; charset=euc-kr" pageEncoding="EUC-KR"
-	errorPage="DBError.jsp"%>
+<%@page contentType="text/html; charset=euc-kr" pageEncoding="EUC-KR" errorPage="../DBError.jsp"%>
 <%@page import="java.sql.* "%>
 <%
 	Connection conn = null;
 	Statement stmt = null;
 	try {
-		String id = (String) session.getAttribute("id");
+		String id = (String) session.getAttribute("userID");
 		String password = (String) session.getAttribute("password");
 		System.out.println(id);
 		Class.forName("com.mysql.jdbc.Driver");

@@ -25,10 +25,10 @@
 	float: left;
 	width: 1000px;
 	font-family: "Jeju Myeongjo", serif;
+	padding-left: 70px; serif;
 	padding-left: 70px;
-	serif;
-     padding-left: 70px;
-	margin-top:40px;
+	margin-top: 40px;
+	margin 0:auto;
 }
 
 #menu nav a {

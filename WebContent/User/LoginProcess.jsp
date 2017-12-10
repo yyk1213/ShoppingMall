@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	errorPage="DBError.jsp"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" errorPage="../DBError.jsp"%>
 <%@ page import="java.sql.*"%>
 <%
 	String id = request.getParameter("id");
@@ -16,16 +15,16 @@
 		ResultSet result = stmt.executeQuery(
 				"select userID from user where userID='" + id + "' and password='" + password + "' ;");
 		if (!result.next()) {
-			%>
+%>
 <script>
-self.window.alert("회원이 아닙니다.");
-location.href("Login.jsp");
+	self.window.alert("회원이 아닙니다.");
+	location.href("Login.jsp");
 </script>
 <%
-		} else {
-			session.setAttribute("id", id);
-			session.setAttribute("password", password);
-			response.sendRedirect("Main.jsp");
+	} else {
+			session.setAttribute("userID", id);
+			session.setAttribute("userPassword", password);
+			response.sendRedirect("../Main.jsp");
 		}
 	} finally {
 		try {
