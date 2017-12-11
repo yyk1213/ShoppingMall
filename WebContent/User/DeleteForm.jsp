@@ -39,7 +39,8 @@
 			<div id="content">
 			<h2>회원탈퇴</h2>
 				<form name="deleteform" method="post" action="DeleteMember.jsp">
-					<input type="password" name="password" maxlength="50" required>비밀번호입력 <br> <input type="SUBMIT" value="확인"> <input type="reset" value="취소" />
+					비밀번호입력<input type="password" name="password" maxlength="50" required><br> 
+					<input type="reset" value="취소" /><input type="SUBMIT" value="확인">
 				</form>
 			</div>
 		</div>

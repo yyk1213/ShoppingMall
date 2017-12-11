@@ -11,7 +11,7 @@
 	<div id="wrapper">
 		<div id="box">
 			<div id="header">
-				<a href="../Main.jsp"><img src="images/joy.png" style="float: left; height: 100%;"></a>
+				<a href="../Main.jsp"><img src="../images/joy.png" style="float: left; height: 100%;"></a>
 				<ul class="nav justify-content-end">
 					<li class="nav-item">
 					<li class="nav-item"><a class="nav-link" href="Login.jsp">·Î±×ÀÎ</a></li>

@@ -5,8 +5,9 @@
 	Statement stmt = null;
 	try {
 		String id = (String) session.getAttribute("userID");
-		String password = (String) session.getAttribute("password");
+		String password = (String) session.getAttribute("userPassword");
 		System.out.println(id);
+		System.out.println(password);
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
 		if (conn == null)

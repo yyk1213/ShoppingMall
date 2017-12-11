@@ -23,7 +23,7 @@
 				</nav>
 			</div>
 			<script>
-				window.onload = function IDCheck() {
+				window.onload = function() {
 					document.getElementById("isCheck").value = "false";
 					document.getElementById("checkId").onclick = function() {
 						var sid = document.getElementById("id").value;
@@ -32,8 +32,17 @@
 						} else {
 							window
 								.open("CheckId.jsp?id=" + sid, "",
-									"width=400 height=400");
+									"width=300 height=300");
 						}
+					}
+					
+					document.getElementById("SignUpForm").onsubmit=function(){
+						var isCheck=document.getElementById("isCheck").value;
+						if(isCheck != "true"){
+							alert("아이디 중복체크를 하지 않았습니다.");
+						    return false;
+						}
+						return true;
 					}
 					//id 란에 포커스가 오면 중복체크를 다시 하도록 isCheck의 값을 변경
 					document.getElementById("id").onblur = function() {
@@ -44,7 +53,13 @@
 			<div id="content">
 				<H4>회원 정보를 입력하세요</H4>
 				<FORM ID="SignUpForm" ACTION=SignUpProcess.jsp Method=POST>
-					<input type="hidden" id="isCheck" /> 아이디:<INPUT TYPE=TEXT NAME=id id="id" required><input type="button" value="중복확인" id="checkId" /> <BR> 패스워드:<INPUT TYPE=PASSWORD NAME=password id="password" required><BR> 이름:<INPUT TYPE=TEXT NAME=name id="name" required><BR> 전화번호:<INPUT TYPE=TEXT NAME=phoneNum id="phoneNum" required><BR> 주소:<INPUT TYPE=TEXT NAME=address id="address" required><BR> <INPUT TYPE="SUBMIT" VALUE='회원가입'> <INPUT TYPE="RESET" VALUE='취소'>
+					<input type="hidden" id="isCheck" /> 
+					아이디:<INPUT TYPE=TEXT NAME=id id="id" required><input type="button" value="중복확인" id="checkId" /> <BR> 
+					패스워드:<INPUT TYPE=PASSWORD NAME=password id="password" required><BR> 
+					이름:<INPUT TYPE=TEXT NAME=name id="name" required><BR> 
+					전화번호:<INPUT TYPE=TEXT NAME=phoneNum id="phoneNum" required><BR> 
+					주소:<INPUT TYPE=TEXT NAME=address id="address" required><BR> 
+					<INPUT TYPE="SUBMIT" VALUE='회원가입'> <INPUT TYPE="RESET" VALUE='취소'>
 				</FORM>
 			</div>
 		</div>

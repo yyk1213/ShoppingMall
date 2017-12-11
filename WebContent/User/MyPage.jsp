@@ -33,100 +33,98 @@
 			</div>
 			<div id="menu">
 				<nav class="nav flex-column">
-					<a class="nav-link" href="../Product/product.jsp">All</a> <a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
+					<a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
 				</nav>
 			</div>
+			<%
+				int total = 0;
+				Connection conn = null;
+				Statement stmt = null;
+				String password = (String) session.getAttribute("userPassword");
+				System.out.println(id);
+
+				try {
+
+					Class.forName("com.mysql.jdbc.Driver");
+					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+					if (conn == null)
+						throw new Exception("데이터베이스에 연결할 수 없습니다.");
+					stmt = conn.createStatement();
+					String sql = "select count(*) from order where orderID=1;";
+					ResultSet rs = stmt.executeQuery(sql);
+					if (rs.next())
+						total = rs.getInt(1);
+					rs.close();
+					rs = stmt.executeQuery("select * from order where orderID=1;");
+			%>
 			<div id="content">
-				<%
-					int total = 0;
-					Connection conn = null;
-					Statement stmt = null;
-					String password = (String) session.getAttribute("password");
-					System.out.println(id);
-
-					try {
-
-						Class.forName("com.mysql.jdbc.Driver");
-						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
-						if (conn == null)
-							throw new Exception("데이터베이스에 연결할 수 없습니다.");
-						stmt = conn.createStatement();
-						String sql="select count(*) from order where userID='"+id+"';";
-						ResultSet rs = stmt.executeQuery(sql);
-						if (rs.next())
-							total = rs.getInt(1);
-						rs.close();
-						rs = stmt.executeQuery("select * from order where userID='" + id + "' ;");
-				%>
-				<div id="content">
-					<h2>내 구매목록</h2>
-					<table width="70%" cellpadding="0" cellspacing="0" border="0">
-						<tr height="1" bgcolor="#82B5DF">
-							<td colspan="6" width="752"></td>
-						</tr>
-						<tr height="5">
-							<td width="5"></td>
-						</tr>
-						<tr height="5" align="center">
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td width="73">번호</td>
-							<td>주문번호</td>
-							<td>구매상품번호</td>
-							<td>수량</td>
-							<td>날짜</td>
-						</tr>
-						<tr height="1" bgcolor="#82B5DF">
-							<td colspan="6" width="752"></td>
-						</tr>
-						<%
-							if (total == 0) {
-						%>
-						<tr align="center" bgcolor="#FFFFFF" height="30">
-							<td colspan="6">구매내역이 없습니다.</td>
-						</tr>
-						<%
-							} else {
-									while (rs.next()) {
-										int orderNum = rs.getInt("orderID");
-										int productID = rs.getInt("productID");
-										int number = rs.getInt("number");
-										int date = rs.getInt("date");
-						%>
-						<tr height="25" align="center">
-							<td>&nbsp;</td>
-							<td><%=orderNum%></td>
-							<td><%=productID%></td>
-							<td><%=number%></td>
-							<td><%=date%></td>
-							<td>&nbsp;</td>
-						</tr>
-						<tr height="1" bgcolor="#D2D2D2">
-							<td colspan="6"></td>
-						</tr>
-						<%
+				<h2>내 구매목록</h2>
+				<table width="70%" cellpadding="0" cellspacing="0" border="0">
+					<tr height="1" bgcolor="#82B5DF">
+						<td colspan="6" width="752"></td>
+					</tr>
+					<tr height="5">
+						<td width="5"></td>
+					</tr>
+					<tr height="5" align="center">
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td width="73">번호</td>
+						<td>주문번호</td>
+						<td>구매상품번호</td>
+						<td>수량</td>
+						<td>날짜</td>
+					</tr>
+					<tr height="1" bgcolor="#82B5DF">
+						<td colspan="6" width="752"></td>
+					</tr>
+					<%
+						if (total == 0) {
+					%>
+					<tr align="center" bgcolor="#FFFFFF" height="30">
+						<td colspan="6">구매내역이 없습니다.</td>
+					</tr>
+					<%
+						} else {
+								while (rs.next()) {
+									int orderNum = rs.getInt("orderID");
+									int productID = rs.getInt("productID");
+									int number = rs.getInt("number");
+									int date = rs.getInt("date");
+					%>
+					<tr height="25" align="center">
+						<td>&nbsp;</td>
+						<td><%=orderNum%></td>
+						<td><%=productID%></td>
+						<td><%=number%></td>
+						<td><%=date%></td>
+						<td>&nbsp;</td>
+					</tr>
+					<tr height="1" bgcolor="#D2D2D2">
+						<td colspan="6"></td>
+					</tr>
+					<%
+						}
 							}
-								}
-								rs.close();
-								stmt.close();
-								conn.close();
-							} catch (SQLException e) {
-								out.println(e.toString());
-							}
-						%>
-						<tr height="1" bgcolor="#82B5DF">
-							<td colspan="6" width="752"></td>
-						</tr>
-					</table><br>
-					내 정보수정
-					<FORM ACTION="Reader.jsp" METHOD=GET>
-						<INPUT TYPE=SUBMIT VALUE='회원정보수정'>
-					</FORM>
-					회원탈퇴
-					<FORM ACTION="DeleteForm.jsp" METHOD=GET>
-						<INPUT TYPE=SUBMIT VALUE='회원탈퇴'>
-					</FORM>
-				</div>
+							rs.close();
+							stmt.close();
+							conn.close();
+						} catch (SQLException e) {
+							out.println(e.toString());
+						}
+					%>
+					<tr height="1" bgcolor="#82B5DF">
+						<td colspan="6" width="752"></td>
+					</tr>
+				</table>
+				<br> 내 정보수정
+				<FORM ACTION="Reader.jsp" METHOD=GET>
+					<INPUT TYPE=SUBMIT VALUE='회원정보수정'>
+				</FORM>
+				회원탈퇴
+				<FORM ACTION="DeleteForm.jsp" METHOD=GET>
+					<INPUT TYPE=SUBMIT VALUE='회원탈퇴'>
+				</FORM>
 			</div>
 		</div>
 	</div>

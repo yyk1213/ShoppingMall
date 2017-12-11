@@ -27,10 +27,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Joy 로그인</title>
+<title>Joy 아이디 중복확인</title>
 </head>
 <body>
-	<%
+<div id="content">	
+<%
 		//아이디가 중복되었을 때 출력
 		if (rs.next()) {
 	%>
@@ -57,16 +58,16 @@
 	사용 가능
 	<br />
 	<form method="get" action="CheckId.jsp" id="idCheckForm">
-		<a href="CheckId.jsp">다른 아이디 선택</a><br /> <input type="button" value="현재 아이디 선택" onClick="javascript:checkIdClose('<%=id%>')" />
+		<a href="CheckId.jsp">다른 아이디 선택</a><br /> <input type="button" value="현재 아이디 선택" onclick="javascript:checkIdClose('<%=id%>')" />
 	</form>
 	<%
 		}
 	%>
 	<script>
 		function checkIdClose(id) {
-			opener.signUpForm.id.value = id;
-			opener.signUpForm.isCheck.value = "true";
-			opener.signUpForm.password.focus();
+			opener.SignUpForm.id.value = id;
+			opener.SignUpForm.isCheck.value = "true";
+			opener.SignUpForm.password.focus();
 	
 			window.close();
 		}
@@ -78,5 +79,6 @@
 			}
 		}
 	</script>
+	</div>
 </body>
 </html>

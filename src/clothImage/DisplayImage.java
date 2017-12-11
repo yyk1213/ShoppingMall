@@ -17,7 +17,7 @@ public class DisplayImage extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String id = request.getParameter("productID");
+		String id = request.getParameter("id");
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
