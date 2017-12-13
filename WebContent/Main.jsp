@@ -22,6 +22,11 @@
 					<li class="nav-item">
 					<li class="nav-item"><a class="nav-link" href="User/Login.jsp">로그인</a></li>
 					<%
+						} else if (id.equals("admin")) {
+					%>
+					<li class="nav-item"><a class="nav-link" href="Manager/ManagerMode.jsp">괸리자모드</a></li>
+					<li class="nav-item"><a class="nav-link" href="User/Logout.jsp">로그아웃</a></li>
+					<%
 						} else {
 					%>
 					<li class="nav-item"><a class="nav-link" href="User/MyPage.jsp">My Page</a></li>
@@ -49,7 +54,7 @@
 					</ol>
 					<div class="carousel-inner" role="listbox">
 						<div class="carousel-item active">
-							<img class="d-block img-fluid" src="/DB_final/DB_image/top_main.png" alt="First slide">
+							<img class="d-block img-fluid" src="images/top_main.png" alt="First slide">
 						</div>
 						<div class="carousel-item">
 							<img class="d-block img-fluid" src="..." alt="Second slide">
@@ -62,31 +67,52 @@
 					</a> <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span>
 					</a>
 				</div>
-				<%
-					Connection conn = null;
-					Statement stmt = null;
-					try {
-						Class.forName("com.mysql.jdbc.Driver");
-						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
-						if (conn == null)
-							throw new Exception("데이터베이스에 연결할 수 없습니다.");
-						stmt = conn.createStatement();
-						ResultSet rs = stmt.executeQuery("select productID, productName, price from product;");
-						if (rs.next()) {
-							int productID = rs.getInt(1);
-							String productname = rs.getString(2);
-							int price = rs.getInt(3);
-				%>
+				<div id="best">
+					<h3 style="text-align: center;">best item</h3>
+					<div class="album text-muted">
+						<div class="container">
+							<div class="row">
+								<%
+									Connection conn = null;
+									Statement stmt = null;
+									try {
+										int count = 0;
+										Class.forName("com.mysql.jdbc.Driver");
+										conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+										if (conn == null)
+											throw new Exception("데이터베이스에 연결할 수 없습니다.");
+										stmt = conn.createStatement();
+										ResultSet rs = stmt
+												.executeQuery("select productID, productName, price from product order by sales desc;");
+										while (rs.next() && count < 4) {
+											int productID = rs.getInt(1);
+											String productname = rs.getString(2);
+											int price = rs.getInt(3);
+											count++;
+								%>
+								<a href="productdetail.jsp?productID=<%=productID%>">
+									<div class="card" style="margin-left: 10px;">
+										<input type="image" src="http://localhost:8080/DB_final/Img?id=<%=productID%>" width="210" height="210">
+										<p class="card-text"><%=productname%></p>
+										<p class="card-text">
+											price:<%=price%>원
+										</p>
+									</div>
+								</a>
+								<%
+									}
+										rs.close();
+										stmt.close();
+										conn.close();
+									} catch (SQLException e) {
+										out.println(e.toString());
+									}
+								%>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<%
-				}
-					rs.close();
-					stmt.close();
-					conn.close();
-				} catch (SQLException e) {
-					out.println(e.toString());
-				}
-			%>
 		</div>
 	</div>
 </body>

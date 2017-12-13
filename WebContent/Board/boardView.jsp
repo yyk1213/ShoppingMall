@@ -114,10 +114,11 @@
 					<td><%=userID%>:</td>
 					<td align="left"><%=content%></a></td>
 					<%
-						if (currentUser.equals(userID)) {
+						if (currentUser != null) {
+										if (currentUser.equals(userID)) {
 					%>
 					<td align="left">
-						<form action=CommentDelete.jsp method="POST">
+						<form action=CommentDelete.jsp?commentID= <%=commentID%> method="POST">
 							<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="댓글을 삭제합니다">delete</button>
 						</form>
 					</td>
@@ -132,15 +133,16 @@
 				<hr>
 				<%
 					}
+							}
+							String id = Integer.toString(boardID);
+							response.addCookie(new Cookie("boardID", id));
+
+							rs.close();
+							rs2.close();
+							stmt.close();
+							conn.close();
+
 						}
-						String id = Integer.toString(boardID);
-						response.addCookie(new Cookie("boardID", id));
-
-						rs.close();
-						rs2.close();
-						stmt.close();
-						conn.close();
-
 					} catch (SQLException e) {
 					}
 				%>

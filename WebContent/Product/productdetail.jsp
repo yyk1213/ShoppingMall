@@ -46,7 +46,8 @@
 					try {
 						Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
 						Statement stmt = conn.createStatement();
-						String sql = "SELECT productName, price,stock, category from product where productID=" + productID;
+						String sql = "SELECT productName, price,stock, category,detail from product where productID="
+								+ productID;
 						ResultSet rs = stmt.executeQuery(sql);
 
 						if (rs.next()) {
@@ -54,25 +55,36 @@
 							int price = rs.getInt(2);
 							int stock = rs.getInt(3);
 							String category = rs.getString(4);
+							String detail = rs.getString(5);
 				%>
 				<div id="pic">
-					<input type="image" src="http://localhost:8080/DB_final/Img?id=<%=productID%>" width="40%">
+					<input type="image" src="http://localhost:8080/DB_final/Img?id=<%=productID%>" width="98%">
 				</div>
 				<div id="detail">
 					<p>
 					<h2><%=productname%></h2>
-					price:
+					<%=detail%><br> price:
 					<%=price%>
 					</p>
-					<form name="productnum" id="productnum" action="buy.jsp">
-						개수:<input type="number" id="number" name="number" required> <input type="submit" text="주문하기">
+					<form name="productnum" id="productnum" method='post'>
+						개수: <input style="width: 10%;" type="number" name="number" required> <input type="button" value="buy" onClick='mySubmit(1)' class="btn btn-secondary btn-sm"> <input type="button" value="basket" onClick='mySubmit(2)' class="btn btn-secondary btn-sm">
 					</form>
+					<script type="text/javascript">
+	function mySubmit(id){
+
+		var element=document.productnum.number.value;
+		if(id==1)
+			location.href="buy.jsp?number="+element;
+	
+		if(id==2)
+			location.href="../User/basket.jsp?number="+element;
+	}
+	</script>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script>
-	
 		window.onload = function() {
 			//submit을 눌렀을 때 호출될 함수설정
 			document.getElementById("productnum").onsubmit = function() {

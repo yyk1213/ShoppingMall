@@ -17,6 +17,10 @@
 }
 
 .search {
+	border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 1px solid black;
 	width: 10%;
 	float: right;
 }
@@ -28,7 +32,12 @@
 	padding-left: 70px; serif;
 	padding-left: 70px;
 	margin-top: 40px;
-	margin 0:auto;
+	margin 0: auto;
+}
+
+#best {
+	width: 100%;
+	margin-top: 50px;
 }
 
 #menu nav a {
@@ -68,10 +77,19 @@
 	text-decoration: none;
 }
 
+#nav-ul {
+	padding-top: 50px;
+}
+
 #img {
 	width: 400px;
 	float: left;
 	border: 1px solid;
+}
+
+#pic {
+	width: 50%;
+	float: left;
 }
 
 #detail {

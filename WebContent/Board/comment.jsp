@@ -55,6 +55,6 @@
 		return null;
 	}%>
 <script language=javascript>
-	self.window.alert(" 댓글이 등록되었습니다 .");
+	self.window.alert("댓글이 등록되었습니다 .");
 	location.href = "boardView.jsp?boardID=<%=boardID%>";
 </script>

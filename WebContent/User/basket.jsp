@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=EUC-KR %>
 <%
 	Cookie[] cookies = request.getCookies();
 %>
@@ -11,39 +11,38 @@
 	request.setCharacterEncoding("euc-kr");
 
 	int productID = Integer.parseInt(getCookieValue(cookies, "productID"));
-	String productname = getCookieValue(cookies, "productname");
+	String productname = getCookieValue(cookies, "productName");
 
 	int number = Integer.parseInt(request.getParameter("number"));
 	String userID = (String) session.getAttribute("userID");
 	String password = (String) session.getAttribute("password");
 	String currentUser = (String) session.getAttribute("userID");
 
-	Date d = new Date();
-	String date = d.toString();
 	int newstock = 0;
 
 	if (userID == null) {
 %>
 <script language=javascript>
-	self.window.alert("ë¡œê·¸ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.");
-	location.href = "../User/Login.jsp?";
+self.window.alert("·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.");
+location.href="Login.jsp?";
 </script>
 <%
 	} else {
 
 		try {
 
-			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root",
+					"forgod1994!");
 
 			Statement stmt = conn.createStatement();
-			PreparedStatement pstmt;
+			PreparedStatement pstmt1 = null;
 			ResultSet rs = null;
-			pstmt = conn.prepareStatement("SELECT stock FROM product WHERE  productID =?");
-			pstmt.setInt(1, productID);
-			rs = pstmt.executeQuery();
+			pstmt1 = conn.prepareStatement("SELECT stock, sales FROM product WHERE  productID =?");
+			pstmt1.setInt(1, productID);
+			rs = pstmt1.executeQuery();
 
 			if (!rs.next())
-				throw new Exception("í•´ë‹¹ ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.");
+				throw new Exception("ÇØ´ç µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.");
 			else {
 				int stock = rs.getInt(1);
 				newstock = stock - number;
@@ -51,29 +50,38 @@
 				if (newstock < 0) {
 %>
 <script language=javascript>
-	self.window.alert("ì¬ê³ ê°€ ë¶€ì¡±í•©ë‹ˆë‹¤. ì£„ì†¡í•©ë‹ˆë‹¤ .");
-	location.href = "../Main.jsp?";
-</script>
+			 self.window.alert("Àç°í°¡ ºÎÁ·ÇÕ´Ï´Ù. ÁË¼ÛÇÕ´Ï´Ù .");
+			 location.href="Main.jsp?";
+			 </script>
 <%
 	} else {
-					String sql2 = "update product set stock =" + newstock + " where productID =" + productID;
-					stmt.executeUpdate(sql2);
 					String command = String
-							.format("insert into joy.order (userID, productID, number) values (?,?,?);");
-					pstmt = conn.prepareStatement(command);
-					pstmt.setString(1, userID);
-					pstmt.setInt(2, productID);
-					pstmt.setInt(3, number);
-					pstmt.execute();
-				}
+							.format("insert into basket(userID, productID, number,date) values(?,?,?,?)");
 
+					PreparedStatement pstmt2 = conn.prepareStatement(command);
+					pstmt2.setString(1, userID);
+					pstmt2.setInt(2, productID);
+					pstmt2.setInt(3, number);
+					pstmt2.setTimestamp(4, new java.sql.Timestamp(new java.util.Date().getTime()));
+
+					pstmt2.execute();
+					pstmt2.close();
+				}
 			}
 
 			rs.close();
 			stmt.close();
-			conn.close();
 
-		} catch (Exception e) {
+			pstmt1.close();
+
+			conn.close();
+%>
+<script language=javascript>
+	 self.window.alert("Àå¹Ù±¸´Ï¿¡ ´ã°å½À´Ï´Ù .");
+	 location.href="Main.jsp?";
+	 </script>
+<%
+	} catch (Exception e) {
 
 			out.println(e.toString());
 

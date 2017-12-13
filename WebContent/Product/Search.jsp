@@ -55,7 +55,7 @@
 										throw new Exception("데이터베이스에 연결할 수 없습니다.");
 									stmt = conn.createStatement();
 									ResultSet rs = stmt
-											.executeQuery("select count(*)from product where productName like '%" + search + "%'");
+											.executeQuery("select count(*) from product where productName like '%" + search + "%'");
 									while (rs.next()) {
 										count = rs.getInt(1);
 									}

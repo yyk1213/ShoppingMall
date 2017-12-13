@@ -44,18 +44,16 @@
 				System.out.println(id);
 
 				try {
-
 					Class.forName("com.mysql.jdbc.Driver");
 					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
 					if (conn == null)
 						throw new Exception("데이터베이스에 연결할 수 없습니다.");
 					stmt = conn.createStatement();
-					String sql = "select count(*) from order where orderID=1;";
-					ResultSet rs = stmt.executeQuery(sql);
+					ResultSet rs = stmt.executeQuery("select count(*) from joy.order where userID='" + id + "';");
 					if (rs.next())
 						total = rs.getInt(1);
 					rs.close();
-					rs = stmt.executeQuery("select * from order where orderID=1;");
+					rs = stmt.executeQuery("select * from joy.order where userID='" + id + "';");
 			%>
 			<div id="content">
 				<h2>내 구매목록</h2>
@@ -68,8 +66,6 @@
 					</tr>
 					<tr height="5" align="center">
 						<td>&nbsp;</td>
-						<td>&nbsp;</td>
-						<td width="73">번호</td>
 						<td>주문번호</td>
 						<td>구매상품번호</td>
 						<td>수량</td>
@@ -90,15 +86,15 @@
 									int orderNum = rs.getInt("orderID");
 									int productID = rs.getInt("productID");
 									int number = rs.getInt("number");
-									int date = rs.getInt("date");
+									String date = rs.getString("date");
 					%>
 					<tr height="25" align="center">
-						<td>&nbsp;</td>
+					<form action="CancleOrder.jsp" method="post">
+						<td><input type="checkbox" value="<%=orderNum%>" name="check"/></td>
 						<td><%=orderNum%></td>
 						<td><%=productID%></td>
 						<td><%=number%></td>
 						<td><%=date%></td>
-						<td>&nbsp;</td>
 					</tr>
 					<tr height="1" bgcolor="#D2D2D2">
 						<td colspan="6"></td>
@@ -116,12 +112,16 @@
 					<tr height="1" bgcolor="#82B5DF">
 						<td colspan="6" width="752"></td>
 					</tr>
-				</table>
-				<br> 내 정보수정
+					<tr>
+					<input type="submit" style="float: right;" value="선택항목 구매취소"/></tr>
+				</form>
+				</table><br>
+				<h2>내 정보수정</h2>
 				<FORM ACTION="Reader.jsp" METHOD=GET>
 					<INPUT TYPE=SUBMIT VALUE='회원정보수정'>
 				</FORM>
-				회원탈퇴
+				<br>
+				<h2>회원탈퇴</h2>
 				<FORM ACTION="DeleteForm.jsp" METHOD=GET>
 					<INPUT TYPE=SUBMIT VALUE='회원탈퇴'>
 				</FORM>
