@@ -32,13 +32,14 @@
 					<div class="index-content">
 						<h3 style="text-align: left; color: #5D5D5D;">글쓰기</h3>
 						<hr>
-						<div class="new-content">
-							<form action=boardNew.jsp METHOD=POST>
-								<label for="titlearea" class="input-label">title</label> <input name="title" class="form-control form-control-sm" id="titlearea" type="text"> <br> <br> <label for="contentarea" class="input-label">content</label>
+							<form action="boardNew.jsp" method="POST">
+								<label for="titlearea" class="input-label">title</label>
+								 <input name="title" class="form-control form-control-sm" id="titlearea" type="text">
+								  <br> <br> 
+								  <label for="contentarea" class="input-label">content</label>
 								<textarea name="content" class="form-control" id="contentarea tippost_content" rows="7"></textarea>
 								<br>
 								<hr>
-						</div>
 						<hr>
 						<button type="submit" class="btn btn-secondary btn-sm" style="float: right;">등록</button>
 						</form>

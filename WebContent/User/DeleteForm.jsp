@@ -33,14 +33,14 @@
 			</div>
 			<div id="menu">
 				<nav class="nav flex-column">
-					<a class="nav-link" href="../Product/product.jsp">All</a> <a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
+				<a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
 				</nav>
 			</div>
 			<div id="content">
 			<h2>회원탈퇴</h2>
 				<form name="deleteform" method="post" action="DeleteMember.jsp">
 					비밀번호입력<input type="password" name="password" maxlength="50" required><br> 
-					<input type="reset" value="취소" /><input type="SUBMIT" value="확인">
+					<input type="reset" class="btn btn-secondary btn-sm" value="취소" /><input type="SUBMIT" class="btn btn-secondary btn-sm" value="확인">
 				</form>
 			</div>
 		</div>

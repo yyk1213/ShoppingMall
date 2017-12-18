@@ -29,9 +29,9 @@
 						}
 					%>
 				</ul>
-				<form class="search" action="../Product/Search.jsp">
-					<input type="text" class="form-control form-control-sm index-search" name="search" id="search" placeholder="Α¦Η°Έν">
-					<button type="submit" class="btn btn-secondary btn-sm">search</button>
+				<form class="search" action="Product/Search.jsp">
+					<input type="text" name="search" id="search" size="8" style="text-align: center; float: left; border: none;">
+					<button type="submit" class="btn btn-secondary btn-sm" style="size: 40%; float: right;">search</button>
 				</form>
 			</div>
 			<div id="menu">
@@ -77,7 +77,7 @@
 			location.href="buy.jsp?number="+element;
 	
 		if(id==2)
-			location.href="../User/basket.jsp?number="+element;
+			location.href="basket.jsp?number="+element;
 	}
 	</script>
 				</div>

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" errorPage="../DBError.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" errorPage="DBError.jsp"%>
 <%@ page import="java.sql.*"%>
 <%
 	request.setCharacterEncoding("euc-kr");
@@ -7,7 +7,6 @@
 <head>
 <link rel="stylesheet" type="text/css" href="../style1.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-<title>Joy °Ô½Ã±Û º¸±â</title>
 </head>
 <body>
 	<div id="wrapper">
@@ -16,18 +15,18 @@
 				<a href="../Main.jsp"><img src="../images/joy.png" style="float: left; height: 100%;"></a>
 				<ul class="nav justify-content-end">
 					<%
-						String UserID = (String) session.getAttribute("userID");
-						if (UserID == null) {
+						String id = (String) session.getAttribute("userID");
+						if (id == null) {
 					%>
 					<li class="nav-item">
-					<li class="nav-item"><a class="nav-link" href="User/SignUp.jsp">È¸¿ø°¡ÀÔ</a></li>
+					<li class="nav-item"><a class="nav-link" href="../User/SignUp.jsp">íšŒì›ê°€ì…</a></li>
 					<li class="nav-item">
-					<li class="nav-item"><a class="nav-link" href="User/Login.jsp">·Î±×ÀÎ</a></li>
+					<li class="nav-item"><a class="nav-link" href="../User/Login.jsp">ë¡œê·¸ì¸</a></li>
 					<%
 						} else {
 					%>
-					<li class="nav-item"><a class="nav-link" href="User/MyPage.jsp">My Page</a></li>
-					<li class="nav-item"><a class="nav-link" href="User/Logout.jsp">·Î±×¾Æ¿ô</a></li>
+					<li class="nav-item"><a class="nav-link" href="../User/MyPage.jsp">My Page</a></li>
+					<li class="nav-item"><a class="nav-link" href="../User/Logout.jsp">ë¡œê·¸ì•„ì›ƒ</a></li>
 					<%
 						}
 					%>
@@ -35,7 +34,7 @@
 			</div>
 			<div id="menu">
 				<nav class="nav flex-column">
-					<a class="nav-link disabled" href="../Product/product.jsp">All</a> <a class="nav-link disabled" href="../Product/top.jsp">Top</a> <a class="nav-link disabled" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link disabled" href="boardList.jsp">Board</a>
+					<a class="nav-link disabled" href="../Product/top.jsp">Top</a> <a class="nav-link disabled" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link disabled" href="boardList.jsp">Board</a>
 				</nav>
 			</div>
 			<%
@@ -56,10 +55,10 @@
 						int hit = rs.getInt(4);
 						hit++;
 			%>
-			<div class="container col-7" id="content">
-				<!-- ³»¿ë -->
+			<div id="content">
+				<!-- ë‚´ìš© -->
 				<div>
-					<h3>ÀÚÀ¯ °Ô½ÃÆÇ</h3>
+					<h3>ê²Œì‹œíŒ</h3>
 					<p class="show-top1" style="border-bottom: 1px solid; border-top: 2px solid;">
 						subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=title%></p>
 					<p class="show-top2" style="border-bottom: 1px solid">
@@ -73,20 +72,21 @@
 							stmt.executeUpdate(sql2);
 				%>
 				<div style="border-top: 2px solid">
+					<br>
 					<form action=boardList.jsp method="GET">
 						<button type="submit" class="btn btn-secondary btn-sm" style="float: left;">list</button>
 					</form>
 					<%
-						if (currentUser.equals(writer)) {
+						if (currentUser != null) {
+									if (currentUser.equals(writer)) {
 					%>
-					<form action=boardList.jsp method="GET">
-						<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="±ÛÀ» »èÁ¦ÇÕ´Ï´Ù">delete</button>
+					<form action=boardDelete.jsp method="GET">
+						<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="ê¸€ì„ ì‚­ì œí•©ë‹ˆë‹¤">delete</button>
 					</form>
-					<form action=boardList.jsp method="GET">
-						<button type="submit" class="btn btn-secondary btn-sm" style="float: right;">edit</button>
-					</form>
+					
 					<%
 						}
+								}
 							}
 
 							rs.close();
@@ -94,11 +94,10 @@
 				</div>
 				<br>
 				<hr>
-				<form action="comment.jsp" method="POST">
+				<form action="comment.jsp" method="POST" style="text-align: center;">
 					<input type="text" class="form-control" name="input_comment" placeholder="comment" style="width: 30em; height: 1.8em; display: inline;">
-					<button type="submit" class="btn btn-secondary btn-sm">µî·Ï</button>
+					<button type="submit" class="btn btn-secondary btn-sm">ë“±ë¡</button>
 				</form>
-				<br>
 				<hr>
 				<%
 					sql = "select commentID, userID, content from comment where boardID=" + boardID;
@@ -107,6 +106,8 @@
 							int commentID = rs2.getInt(1);
 							String userID = rs2.getString(2);
 							String content = rs2.getString(3);
+							String cid = Integer.toString(commentID);
+
 							if (userID != null) {
 				%>
 				<tr height="25" align="center">
@@ -117,13 +118,16 @@
 						if (currentUser != null) {
 										if (currentUser.equals(userID)) {
 					%>
-					<td align="left">
-						<form action=CommentDelete.jsp?commentID= <%=commentID%> method="POST">
-							<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="´ñ±ÛÀ» »èÁ¦ÇÕ´Ï´Ù">delete</button>
-						</form>
-					</td>
+					<td align="left"><%=commentID%>
+						<form action=CommentDelete.jsp method="POST">
+							<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="ëŒ“ê¸€ì„ ì‚­ì œí•©ë‹ˆë‹¤">delete</button>
+						</form></td>
+					<%
+						response.addCookie(new Cookie("commentID", cid));
+					%>
 					<%
 						}
+									}
 					%>
 				</tr>
 				<tr height="1" bgcolor="#D2D2D2">
@@ -133,16 +137,15 @@
 				<hr>
 				<%
 					}
-							}
-							String id = Integer.toString(boardID);
-							response.addCookie(new Cookie("boardID", id));
-
-							rs.close();
-							rs2.close();
-							stmt.close();
-							conn.close();
-
 						}
+						id = Integer.toString(boardID);
+						response.addCookie(new Cookie("boardID", id));
+
+						rs.close();
+						rs2.close();
+						stmt.close();
+						conn.close();
+
 					} catch (SQLException e) {
 					}
 				%>

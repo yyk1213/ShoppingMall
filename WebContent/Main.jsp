@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" errorPage="DBError.jsp"%>
 <%@page import="java.sql.*"%>
+<%
+	request.setCharacterEncoding("euc-kr");
+%>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style1.css">
@@ -36,8 +39,8 @@
 					%>
 				</ul>
 				<form class="search" action="Product/Search.jsp">
-					<input type="text" class="form-control form-control-sm index-search" name="search" id="search" placeholder="Α¦Η°Έν">
-					<button type="submit" class="btn btn-secondary btn-sm">search</button>
+					<input type="text" name="search" id="search" size="8" style="text-align: center; float: left; border: none;">
+					<button type="submit" class="btn btn-secondary btn-sm" style="size: 40%; float: right;">search</button>
 				</form>
 			</div>
 			<div id="menu">
@@ -90,7 +93,7 @@
 											int price = rs.getInt(3);
 											count++;
 								%>
-								<a href="productdetail.jsp?productID=<%=productID%>">
+								<a href="Product/productdetail.jsp?productID=<%=productID%>">
 									<div class="card" style="margin-left: 10px;">
 										<input type="image" src="http://localhost:8080/DB_final/Img?id=<%=productID%>" width="210" height="210">
 										<p class="card-text"><%=productname%></p>

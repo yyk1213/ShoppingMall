@@ -1,17 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.Date"%>
-<%@ page contentType="text/html; charset=EUC-KR %>
 <%
 	Cookie[] cookies = request.getCookies();
 %>
 <%
-	request.setCharacterEncoding("euc-kr");
-
 	Class.forName("com.mysql.jdbc.Driver");
-	request.setCharacterEncoding("euc-kr");
 
 	int productID = Integer.parseInt(getCookieValue(cookies, "productID"));
-	String productname = getCookieValue(cookies, "productName");
+	String productname = getCookieValue(cookies, "productname");
 
 	int number = Integer.parseInt(request.getParameter("number"));
 	String userID = (String) session.getAttribute("userID");
@@ -24,7 +21,7 @@
 %>
 <script language=javascript>
 self.window.alert("로그인이 필요합니다.");
-location.href="Login.jsp?";
+location.href="../User/Login.jsp?";
 </script>
 <%
 	} else {
@@ -51,7 +48,7 @@ location.href="Login.jsp?";
 %>
 <script language=javascript>
 			 self.window.alert("재고가 부족합니다. 죄송합니다 .");
-			 location.href="Main.jsp?";
+			 location.href="../Main.jsp?";
 			 </script>
 <%
 	} else {
@@ -78,7 +75,7 @@ location.href="Login.jsp?";
 %>
 <script language=javascript>
 	 self.window.alert("장바구니에 담겼습니다 .");
-	 location.href="Main.jsp?";
+	 location.href="../Main.jsp?";
 	 </script>
 <%
 	} catch (Exception e) {

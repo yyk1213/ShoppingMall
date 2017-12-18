@@ -21,8 +21,10 @@
 	outline: 0;
 	background: transparent;
 	border-bottom: 1px solid black;
-	width: 10%;
+	width: 20%;
 	float: right;
+	margin-top: 15px;
+	margin-right: 3px;
 }
 
 #content {
@@ -31,8 +33,7 @@
 	font-family: "Jeju Myeongjo", serif;
 	padding-left: 70px; serif;
 	padding-left: 70px;
-	margin-top: 40px;
-	margin 0: auto;
+	margin: 0 auto;
 }
 
 #best {

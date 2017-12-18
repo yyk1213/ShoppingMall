@@ -19,7 +19,7 @@
 			</div>
 			<div id="menu">
 				<nav class="nav flex-column">
-					<a class="nav-link" href="../Product/product.jsp">All</a> <a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
+					<a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
 				</nav>
 			</div>
 			<script>
@@ -53,13 +53,7 @@
 			<div id="content">
 				<H4>회원 정보를 입력하세요</H4>
 				<FORM ID="SignUpForm" ACTION=SignUpProcess.jsp Method=POST>
-					<input type="hidden" id="isCheck" /> 
-					아이디:<INPUT TYPE=TEXT NAME=id id="id" required><input type="button" value="중복확인" id="checkId" /> <BR> 
-					패스워드:<INPUT TYPE=PASSWORD NAME=password id="password" required><BR> 
-					이름:<INPUT TYPE=TEXT NAME=name id="name" required><BR> 
-					전화번호:<INPUT TYPE=TEXT NAME=phoneNum id="phoneNum" required><BR> 
-					주소:<INPUT TYPE=TEXT NAME=address id="address" required><BR> 
-					<INPUT TYPE="SUBMIT" VALUE='회원가입'> <INPUT TYPE="RESET" VALUE='취소'>
+					<input style="border:none; border-bottom:1px solid;" type="hidden" id="isCheck" /> 아이디:<INPUT TYPE=TEXT NAME=id id="id" style="border:none; border-bottom:1px solid;" required><input type="button" class="btn btn-secondary btn-sm" value="중복확인" id="checkId" /> <BR> 패스워드:<INPUT TYPE=PASSWORD style="border:none; border-bottom:1px solid;" NAME=password id="password" required><BR> 이름:<INPUT TYPE=TEXT style="border:none; border-bottom:1px solid;" NAME=name id="name" required><BR> 전화번호:<INPUT TYPE=TEXT style="border:none; border-bottom:1px solid;" NAME=phoneNum id="phoneNum" required><BR> 주소:<INPUT TYPE=TEXT style="border:none; border-bottom:1px solid;"  NAME=address id="address" required><BR> <INPUT TYPE="SUBMIT" class="btn btn-secondary btn-sm" VALUE='회원가입'> <INPUT TYPE="RESET" class="btn btn-secondary btn-sm" VALUE='취소'>
 				</FORM>
 			</div>
 		</div>

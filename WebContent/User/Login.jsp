@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Joy 로그인</title>
 </head>
+<style>
+</style>
 <body>
 	<div id="wrapper">
 		<div id="box">
@@ -33,12 +35,12 @@
 			</div>
 			<div id="menu">
 				<nav class="nav flex-column">
-					<a class="nav-link" href="../Product/product.jsp">All</a> <a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
+					<a class="nav-link" href="../Product/top.jsp">Top</a> <a class="nav-link" href="../Product/bottom.jsp">Bottom</a> <a class="nav-link" href="../Board/boardList.jsp">Board</a>
 				</nav>
 			</div>
 			<div id="content">
 				<FORM ACTION=LoginProcess.jsp Method=POST>
-					아이디:<INPUT TYPE=TEXT NAME=id required><BR> 패스워드:<INPUT TYPE=PASSWORD NAME=password required><INPUT TYPE="submit" VALUE='확인'><BR>
+					아이디:<INPUT TYPE=TEXT NAME=id required><BR> 패스워드:<INPUT TYPE=PASSWORD NAME=password required><INPUT TYPE="submit" VALUE='확인' class="btn btn-secondary btn-sm"><BR>
 				</FORM>
 				<a href="SignUp.jsp">회원가입 하기</a>
 			</div>

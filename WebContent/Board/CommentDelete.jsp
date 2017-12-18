@@ -1,41 +1,47 @@
-<%@ page contentType="text/html; charset=EUC-KR"%>
-<%@ page import="java.sql.*"%>
-<%
-	request.setCharacterEncoding("euc-kr");
-%>
-<%
-	Cookie[] cookies = request.getCookies();
-%>
-<%
-	int commentID = Integer.parseInt(request.getParameter("commentID"));
+<%@ page import="java.sql.*" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
-	String bid = getCookieValue(cookies, "boardID");
-	int boardID = Integer.parseInt(bid);
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
-	Statement stmt = conn.createStatement();
-	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994");
+<%Cookie[] cookies =request.getCookies();%>
+<%request.setCharacterEncoding("euc-kr");%>
+<%
 
-	String sql = "delete from comment where commentID=? and boardID=?";
-	PreparedStatement pstmt = conn.prepareStatement(sql);
-	pstmt.setInt(1, commentID);
-	pstmt.setInt(2, boardID);
-	pstmt.executeUpdate();
+Class.forName( "com.mysql.jdbc.Driver");
+request.setCharacterEncoding("euc-kr");
+String commentID=getCookieValue(cookies,"commentID");
 
-	pstmt.close();
-	conn.close();
+String bid=getCookieValue(cookies,"boardID");
+int boardID=Integer.parseInt(bid);
+try {
+
+Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
+
+   String command="delete from comment where commentID=? and boardID=?";
+   PreparedStatement pstmt= conn.prepareStatement(command);
+   pstmt.setString(1,commentID);
+   pstmt.setInt(2,boardID);
+   
+   pstmt.executeUpdate();
+   pstmt.close();
+   conn.close();
+
+
+} catch (Exception e) {
+
+   out.println(e.toString());
+
+
+}
+
 %>
-<%!private String getCookieValue(Cookie[] cookies, String name) {
-		String value = null;
-		if (cookies == null)
-			return null;
-		for (Cookie cookie : cookies) {
-			if (cookie.getName().equals(name))
-				return cookie.getValue();
-		}
+ <%!
+private String getCookieValue(Cookie[] cookies, String name){
+		String value=null;
+		if(cookies==null) return null;
+		for(Cookie cookie:cookies){
+			if(cookie.getName().equals(name)) return cookie.getValue();}
 		return null;
-	}%>
-<script language=javascript>
- self.window.alert("´ñ±ÛÀ» »èÁ¦Çß½À´Ï´Ù.");
- location.href="boardView.jsp?boardID=<%=boardID%>";
-</script>
+		} %>
+		<script>
+		self.window.alert("ëŒ“ê¸€ì„ ì‚­ì œí–ˆìŠµë‹ˆë‹¤.");
+		location.href="boardView.jsp?boardID=<%=boardID%>";
+		</script>

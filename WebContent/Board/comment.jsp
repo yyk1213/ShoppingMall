@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" errorPage="../DBError.jsp"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.sql.*"%>
 <%
 	request.setCharacterEncoding("euc-kr");
@@ -7,7 +7,6 @@
 	Cookie[] cookies = request.getCookies();
 %>
 <%
-	request.setCharacterEncoding("euc-kr");
 	Class.forName("com.mysql.jdbc.Driver");
 	String content = request.getParameter("input_comment");
 	String userID = (String) session.getAttribute("userID");
@@ -17,17 +16,17 @@
 	if (userID == null) {
 %>
 <script language=javascript>
-	self.window.alert("·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.");
-	location.href = "../UserLogin.jsp?";
+self.window.alert("ë¡œê·¸ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.");
+location.href="../User/Login.jsp?";
 </script>
 <%
 	} else {
 
 		try {
 
-			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "1234");
-
-			String command = String.format("insert into comment(userID,boardID, content)values(?,?,?)");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root",
+					"forgod1994!");
+			String command = String.format("insert into comment(userID,boardID,content)values(?,?,?)");
 			PreparedStatement pstmt = conn.prepareStatement(command);
 			pstmt.setString(1, userID);
 			pstmt.setInt(2, boardID);
@@ -55,6 +54,6 @@
 		return null;
 	}%>
 <script language=javascript>
-	self.window.alert("´ñ±ÛÀÌ µî·ÏµÇ¾ú½À´Ï´Ù .");
-	location.href = "boardView.jsp?boardID=<%=boardID%>";
-</script>
+ self.window.alert(" ëŒ“ê¸€ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤ .");
+ location.href="boardView.jsp?boardID=<%=boardID%>";
+ </script>

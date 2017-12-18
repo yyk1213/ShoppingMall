@@ -5,8 +5,6 @@
 	Cookie[] cookies = request.getCookies();
 %>
 <%
-	request.setCharacterEncoding("euc-kr");
-
 	Class.forName("com.mysql.jdbc.Driver");
 	request.setCharacterEncoding("euc-kr");
 
@@ -28,9 +26,7 @@ location.href="Login.jsp?";
 </script>
 <%
 	} else {
-
-		try {
-
+		try{
 			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root",
 					"forgod1994!");
 
@@ -79,9 +75,7 @@ location.href="Login.jsp?";
 
 			rs.close();
 			stmt.close();
-
 			pstmt1.close();
-
 			conn.close();
 %>
 <script language=javascript>
