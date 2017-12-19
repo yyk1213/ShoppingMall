@@ -1,6 +1,9 @@
 <%@page contentType="text/html; charset=euc-kr" errorPage="../DBError.jsp"%>
 <%@page import="java.sql.* "%>
 <%
+	request.setCharacterEncoding("euc-kr");
+%>
+<%
 	String name = request.getParameter("name");
 	String ID = request.getParameter("id");
 	String password = request.getParameter("password");

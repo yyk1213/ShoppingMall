@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page contentType="text/html; charset=euc-kr"%>
 <%@ page import="java.sql.*"%>
 <%
 	request.setCharacterEncoding("euc-kr");
@@ -16,7 +16,7 @@
 	if (userID == null) {
 %>
 <script language=javascript>
-self.window.alert("ë¡œê·¸ì¸ì´ í•„ìš”í•©ë‹ˆë‹¤.");
+self.window.alert("·Î±×ÀÎÀÌ ÇÊ¿äÇÕ´Ï´Ù.");
 location.href="../User/Login.jsp?";
 </script>
 <%
@@ -54,6 +54,6 @@ location.href="../User/Login.jsp?";
 		return null;
 	}%>
 <script language=javascript>
- self.window.alert(" ëŒ“ê¸€ì´ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤ .");
+ self.window.alert(" ´ñ±ÛÀÌ µî·ÏµÇ¾ú½À´Ï´Ù .");
  location.href="boardView.jsp?boardID=<%=boardID%>";
  </script>

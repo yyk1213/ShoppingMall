@@ -40,10 +40,12 @@
 				</nav>
 			</div>
 			<div id="content">
-			<h2>회원정보 수정</h2>
+			<div id="login" style="margin: 100px; auto; width:60%; border: 1px solid; padding: 100px; border-radius:25px;">
+				<h2>회원정보 </h2>
 				<FORM NAME="EditForm" ID="EditForm" ACTION=Updater.jsp METHOD=POST>
-					이름: <INPUT TYPE=TEXT NAME=name SIZE=5 VALUE='${NAME}' required><BR> 아이디: <INPUT TYPE=TEXT NAME=id SIZE=50 VALUE='${ID}' required> <BR> 비밀번호: <INPUT TYPE=TEXT NAME=password SIZE=20 VALUE='${PASSWORD}'required> <BR> 주소: <INPUT TYPE=TEXT NAME=address SIZE=50 VALUE='${ADDRESS}' required><BR> 휴대폰 번호: <INPUT TYPE=TEXT NAME=phoneNum SIZE=50 VALUE='${PHONENUM}'required><BR> <INPUT TYPE="SUBMIT" VALUE='수정'>
+					이름: <INPUT TYPE=TEXT NAME=name SIZE=5 VALUE='${NAME}' required><BR> 아이디: <INPUT TYPE=TEXT NAME=id SIZE=50 VALUE='${ID}' required> <BR> 비밀번호: <INPUT TYPE=TEXT NAME=password SIZE=20 VALUE='${PASSWORD}'required> <BR> 주소: <INPUT TYPE=TEXT NAME=address SIZE=50 VALUE='${ADDRESS}' required><BR> 휴대폰 번호: <INPUT TYPE=TEXT NAME=phoneNum SIZE=50 VALUE='${PHONENUM}'required><BR> <INPUT TYPE="SUBMIT" class="btn btn-secondary btn-sm" VALUE='수정'>
 				</FORM>
+				</div>
 			</div>
 		</div>
 	</div>

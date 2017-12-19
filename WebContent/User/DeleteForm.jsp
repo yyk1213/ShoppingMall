@@ -37,11 +37,13 @@
 				</nav>
 			</div>
 			<div id="content">
+			<div id="login" style="margin: 100px; auto; width:60%; border: 1px solid; padding: 80px; border-radius:25px;">
 			<h2>회원탈퇴</h2>
 				<form name="deleteform" method="post" action="DeleteMember.jsp">
 					비밀번호입력<input type="password" name="password" maxlength="50" required><br> 
 					<input type="reset" class="btn btn-secondary btn-sm" value="취소" /><input type="SUBMIT" class="btn btn-secondary btn-sm" value="확인">
 				</form>
+				</div>
 			</div>
 		</div>
 	</div>

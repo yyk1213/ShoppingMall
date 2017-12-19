@@ -39,10 +39,13 @@
 				</nav>
 			</div>
 			<div id="content">
+			<div id="login" style="margin: 100px; auto; width:60%; border: 1px solid; padding: 100px; border-radius:25px;">
 				<FORM ACTION=LoginProcess.jsp Method=POST>
-					아이디:<INPUT TYPE=TEXT NAME=id required><BR> 패스워드:<INPUT TYPE=PASSWORD NAME=password required><INPUT TYPE="submit" VALUE='확인' class="btn btn-secondary btn-sm"><BR>
+					아이디:<INPUT TYPE=TEXT NAME=id style="border:none; border-bottom:1px solid;"required><BR> 패스워드:<INPUT TYPE=PASSWORD NAME=password style="border:none; border-bottom:1px solid;" required>
+					<br><br><INPUT TYPE="submit" VALUE='확인'  style="float:right;" class="btn btn-secondary btn-sm"><BR>
 				</FORM>
 				<a href="SignUp.jsp">회원가입 하기</a>
+				</div>
 			</div>
 		</div>
 	</div>

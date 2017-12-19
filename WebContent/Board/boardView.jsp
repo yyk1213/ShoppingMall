@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" errorPage="DBError.jsp"%>
+<%@ page language="java" contentType="text/html; charset=euc-kr" errorPage="DBError.jsp"%>
 <%@ page import="java.sql.*"%>
 <%
 	request.setCharacterEncoding("euc-kr");
@@ -19,14 +19,14 @@
 						if (id == null) {
 					%>
 					<li class="nav-item">
-					<li class="nav-item"><a class="nav-link" href="../User/SignUp.jsp">íšŒì›ê°€ì…</a></li>
+					<li class="nav-item"><a class="nav-link" href="../User/SignUp.jsp">È¸¿ø°¡ÀÔ</a></li>
 					<li class="nav-item">
-					<li class="nav-item"><a class="nav-link" href="../User/Login.jsp">ë¡œê·¸ì¸</a></li>
+					<li class="nav-item"><a class="nav-link" href="../User/Login.jsp">·Î±×ÀÎ</a></li>
 					<%
 						} else {
 					%>
 					<li class="nav-item"><a class="nav-link" href="../User/MyPage.jsp">My Page</a></li>
-					<li class="nav-item"><a class="nav-link" href="../User/Logout.jsp">ë¡œê·¸ì•„ì›ƒ</a></li>
+					<li class="nav-item"><a class="nav-link" href="../User/Logout.jsp">·Î±×¾Æ¿ô</a></li>
 					<%
 						}
 					%>
@@ -56,9 +56,9 @@
 						hit++;
 			%>
 			<div id="content">
-				<!-- ë‚´ìš© -->
+				<!-- ³»¿ë -->
 				<div>
-					<h3>ê²Œì‹œíŒ</h3>
+					<h3>°Ô½ÃÆÇ</h3>
 					<p class="show-top1" style="border-bottom: 1px solid; border-top: 2px solid;">
 						subject &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%=title%></p>
 					<p class="show-top2" style="border-bottom: 1px solid">
@@ -81,7 +81,7 @@
 									if (currentUser.equals(writer)) {
 					%>
 					<form action=boardDelete.jsp method="GET">
-						<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="ê¸€ì„ ì‚­ì œí•©ë‹ˆë‹¤">delete</button>
+						<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="±ÛÀ» »èÁ¦ÇÕ´Ï´Ù">delete</button>
 					</form>
 					
 					<%
@@ -96,7 +96,7 @@
 				<hr>
 				<form action="comment.jsp" method="POST" style="text-align: center;">
 					<input type="text" class="form-control" name="input_comment" placeholder="comment" style="width: 30em; height: 1.8em; display: inline;">
-					<button type="submit" class="btn btn-secondary btn-sm">ë“±ë¡</button>
+					<button type="submit" class="btn btn-secondary btn-sm">µî·Ï</button>
 				</form>
 				<hr>
 				<%
@@ -113,14 +113,14 @@
 				<tr height="25" align="center">
 					<td>&nbsp;</td>
 					<td><%=userID%>:</td>
-					<td align="left"><%=content%></a></td>
+					<td align="left"><%=content%></td>
 					<%
 						if (currentUser != null) {
 										if (currentUser.equals(userID)) {
 					%>
-					<td align="left"><%=commentID%>
+					<td align="left">
 						<form action=CommentDelete.jsp method="POST">
-							<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="ëŒ“ê¸€ì„ ì‚­ì œí•©ë‹ˆë‹¤">delete</button>
+							<button type="submit" class="btn btn-secondary btn-sm" style="float: right;" formmethod="POST" data-confirm="´ñ±ÛÀ» »èÁ¦ÇÕ´Ï´Ù">delete</button>
 						</form></td>
 					<%
 						response.addCookie(new Cookie("commentID", cid));
