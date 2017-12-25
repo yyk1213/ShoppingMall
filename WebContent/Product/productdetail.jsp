@@ -43,7 +43,7 @@
 					Class.forName("com.mysql.jdbc.Driver");
 					int productID = Integer.parseInt(request.getParameter("productID"));
 					try {
-						Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
+						Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "1234");
 						Statement stmt = conn.createStatement();
 						String sql = "SELECT productname, price,stock, category,detail from product where productID="
 								+ productID;

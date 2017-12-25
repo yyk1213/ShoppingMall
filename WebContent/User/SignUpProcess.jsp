@@ -11,7 +11,7 @@
 	Statement stmt = null;
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+		conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "1234");
 		if (name == null || id == null || password == null || phoneNum == null || address == null)
 			throw new Exception("누락된 데이터가 있습니다.");
 

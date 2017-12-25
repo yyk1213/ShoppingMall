@@ -10,9 +10,9 @@
 	String bid = getCookieValue(cookies, "boardID");
 	int boardID = Integer.parseInt(bid);
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
+	Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "1234");
 	Statement stmt = conn.createStatement();
-	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+	conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "1234");
 
 	String sql = "delete from board where boardID=?";
 	PreparedStatement pstmt = conn.prepareStatement(sql);

@@ -43,7 +43,7 @@
 				int boardID = Integer.parseInt(request.getParameter("boardID"));
 				String currentUser = (String) session.getAttribute("userID");
 				try {
-					Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
+					Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "1234");
 					Statement stmt = conn.createStatement();
 					String sql = "SELECT TITLE, CONTENT, WRITER,HIT FROM board WHERE boardID=" + boardID;
 					ResultSet rs = stmt.executeQuery(sql);

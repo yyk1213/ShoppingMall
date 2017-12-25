@@ -53,7 +53,7 @@ function checkOrder(){
 
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
-					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+					conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "1234");
 					if (conn == null)
 						throw new Exception("데이터베이스에 연결할 수 없습니다.");
 					stmt = conn.createStatement();
@@ -129,7 +129,7 @@ function checkOrder(){
 
 					try {
 						Class.forName("com.mysql.jdbc.Driver");
-						conn1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+						conn1 = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "1234");
 						if (conn1 == null)
 							throw new Exception("데이터베이스에 연결할 수 없습니다.");
 						stmt1 = conn1.createStatement();

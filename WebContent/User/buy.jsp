@@ -28,7 +28,7 @@ location.href="Login.jsp?";
 	} else {
 		try{
 			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root",
-					"forgod1994!");
+					"1234");
 
 			Statement stmt = conn.createStatement();
 			PreparedStatement pstmt1 = null;

@@ -25,7 +25,7 @@ location.href="../User/Login.jsp?";
 		try {
 
 			Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root",
-					"forgod1994!");
+					"1234");
 			String command = String.format("insert into comment(userID,boardID,content)values(?,?,?)");
 			PreparedStatement pstmt = conn.prepareStatement(command);
 			pstmt.setString(1, userID);

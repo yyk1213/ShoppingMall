@@ -10,7 +10,7 @@
 
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "1234");
 
 		if (con == null)
 			throw new Exception("데이터베이스에 연결할 수 없습니다.");

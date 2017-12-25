@@ -13,7 +13,7 @@ String bid=getCookieValue(cookies,"boardID");
 int boardID=Integer.parseInt(bid);
 try {
 
-Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "forgod1994!");
+Connection conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/joy", "root", "1234");
 
    String command="delete from comment where commentID=? and boardID=?";
    PreparedStatement pstmt= conn.prepareStatement(command);

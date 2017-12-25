@@ -26,7 +26,7 @@ public class DisplayImage extends HttpServlet {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "1234");
 			stmt = conn.createStatement();
 			String sql = "SELECT img FROM product where productID=" + id;
 

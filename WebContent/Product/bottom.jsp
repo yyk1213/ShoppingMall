@@ -53,7 +53,7 @@
 							ResultSet rs = null;
 							try {
 								Class.forName("com.mysql.jdbc.Driver");
-								conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "forgod1994!");
+								conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/joy", "root", "1234");
 								stmt = conn.createStatement();
 								rs = stmt.executeQuery("select productID, productName, price from product where category='bottom';");
 
